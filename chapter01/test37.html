@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    <script>
+        const height = parseFloat(prompt("신장을 입력하세요 (cm):")); // 신장 입력
+        const weight = parseFloat(prompt("몸무게를 입력하세요 (kg):")); // 몸무게 입력
+
+        const idealWeight = (height - 100) * 0.9; // 적정 몸무게 공식 계산
+        const message = weight > idealWeight 
+            ? "적정 몸무게 이상" 
+            : "적정 몸무게 미달";
+
+        document.write(`<h1>${message}</h1>`);
+    </script>
+</body>
+</html>

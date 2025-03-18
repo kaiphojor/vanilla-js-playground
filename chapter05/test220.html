@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// XMLHttpRequest 객체 생성
+// let xhr = new XMLHttpRequest();
+
+// // 요청 초기화: HTTP GET 메소드와 URL 설정
+// xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true); // 비동기 요청
+
+// // 요청이 완료되었을 때 실행될 콜백 함수 정의
+// xhr.onload = function () {
+//     if (xhr.status >= 200 && xhr.status < 300) {
+//         // 요청 성공: 응답 출력
+//         console.log("Response received:");
+//         var result = JSON.parse(xhr.responseText);
+//         console.log(result); // JSON 형식 파싱
+//         console.log(result.body);
+//         console.log(result.title);
+//     } else {
+//         // 요청 실패: 상태 코드 출력
+//         console.log(`Error: ${xhr.status}`);
+//     }
+// };
+
+// // 요청 실패 시 실행될 콜백 함수 정의
+// xhr.onerror = function () {
+//     console.error("Request failed.");
+// };
+
+// // 요청 전송
+// xhr.send();
+
+
+// XMLHttpRequest 객체 생성
+const xhr = new XMLHttpRequest();
+
+// 요청 초기화: HTTP GET 메소드와 URL 설정
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true); // 비동기 요청
+
+// 요청 헤더 추가
+xhr.setRequestHeader("Content-Type", "application/json"); // JSON 데이터 타입 명시
+xhr.setRequestHeader("Authorization", "Bearer your_token_here"); // 인증 토큰 예시
+
+// 요청이 완료되었을 때 실행
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) { // 요청 완료 상태
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // 요청 성공: 응답 출력
+            console.log("Response received:");
+            console.log(JSON.parse(xhr.responseText)); // JSON 형식으로 응답 출력
+        } else {
+            // 요청 실패: 상태 코드 출력
+            console.log(`Error: ${xhr.status}`);
+        }
+    }
+};
+
+// 요청 전송
+xhr.send();
+
+
+
+    </script>
+</body>
+</html>

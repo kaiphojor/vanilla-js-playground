@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    
+    <script>
+        let brands = ["애플", "구글", "페이스북", "아마존", "삼성전자"];
+
+        brands.forEach((brand) => {
+            console.log(brand);
+        });
+
+        // for (let i = 0; i < brands.length; i++) {
+        //     console.log(brands[i]);
+        // }
+
+        var productList = [
+            {
+                name:'솔의눈',
+                price: 700
+            },
+            {
+                name:'데자와',
+                price: 800
+            },
+            {
+                name:'보리차',
+                price: 1200
+            },
+        ];
+
+        productList.forEach((product) => {
+            document.write("<br>Product:");
+            for (const key in product) {
+                document.write(`<br>&nbsp;&nbsp;${key}: ${product[key]}`);
+            }
+        });
+
+        let inputCoin = 750;
+        let result = productList.filter((e)=>e.price <= inputCoin);
+        console.log(result);
+    </script>
+</body>
+</html>

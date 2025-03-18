@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    <script>
+        const person={
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue",
+            1: "red",
+            objName: function(){
+                return this.name();
+            },
+            objArrow: ()=>{this.name},
+            arr: [1,2,3],
+            name: function(){return this.firstName + " " + this.lastName;}
+        };
+        for(const key in person){
+            console.log(key + " " + person[key]);
+        }
+        console.log(person.name());        
+        console.log(person.objName());
+        person["age"] = 51;
+        person.age = 52;
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// getCoordinate 메소드: 위도와 경도를 배열로 반환
+function getCoordinate() {
+    return [37.5665, 126.9780]; // 서울의 위도와 경도 예시
+}
+
+// 하나의 변수로 받아 인덱스로 접근
+const coordinate = getCoordinate();
+
+console.log(`Latitude: ${coordinate[0]}`);
+console.log(`Longitude: ${coordinate[1]}`);
+
+// 배열 구조분해로 변수에 각각 할당
+const [latitude, longitude] = getCoordinate();
+
+console.log(`Latitude: ${latitude}`);
+console.log(`Longitude: ${longitude}`);
+
+    </script>
+</body>
+</html>

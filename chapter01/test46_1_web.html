@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 루틴</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 중앙에서 위쪽으로 배치 */
+            height: 100vh;
+        }
+
+        .content {
+            margin-top: 50px; /* 콘텐츠를 위쪽으로 올리기 위해 여백 추가 */
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50; /* 제목 색상 */
+        }
+
+        h2 {
+            color: #34495e; /* 서브 제목 색상 */
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 이미지 그림자 효과 */
+        }
+
+        .content {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>오늘의 일일 루틴</h1>
+        <!-- 콘텐츠가 JS에 의해 동적으로 생성됩니다. -->
+    </div>
+    <script>
+        function dailyRoutine() {
+            const date = new Date(); // 현재 날짜 및 시간 가져오기
+            const hour = date.getHours(); // 현재 시간 가져오기 (0 ~ 23)
+            // const hour = 21; // 현재 시간 가져오기 (0 ~ 23)
+
+            // 시계 이모지 매핑 (24시간을 명확히 매핑)
+            const clockEmoji = [
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", 
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"
+            ];
+
+            // 기본 이미지 URL 설정
+            const defaultImage = "https://example.com/default.jpg";
+
+            // 시간별 활동 및 이미지 데이터
+            const activityData = {
+                "0-6": { activity: "취침", image: "https://cdn.acidcow.com/pics/20190713/1563040717_tnl9hhkc3l.jpg" },
+                7: { activity: "하루 보너스 게임 하기", image: "https://i.ytimg.com/vi/uBuZZHgY2gY/maxresdefault.jpg" },
+                8: { activity: "뒹굴면서 몸 지지고 나갈 준비하기", image: "https://i.kym-cdn.com/photos/images/original/001/730/671/69d.jpg" },
+                9: { activity: "지하철 통근하기", image: "https://th.bing.com/th/id/R.4105e0ccdbf2f0bc909db64f626a0f42?rik=wOK2riPrVCvxxg&riu=http%3a%2f%2fwww.thedailystruggle.co.uk%2fwp-content%2fuploads%2f2017%2f03%2fcommute.jpg&ehk=2Hv4RfzJd7BMWkbIpy5qhsZLICCtPdIG5Ko%2bdd1z8iA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" },
+                "10-12": { activity: "오전 강의 듣는 시간", image: "https://th.bing.com/th/id/OIP.6uZhoqccWLK2RT32QS9ykwHaFm?w=478&h=362&rs=1&pid=ImgDetMain" },
+                13: { activity: "점심시간", image: "https://th.bing.com/th/id/OIP.X59W5jbF__Wa6ehxOJDNogHaE7?rs=1&pid=ImgDetMain" },
+                "14-17": { activity: "오후 강의 듣는 시간", image: "https://img.freepik.com/premium-vector/boy-sleeping-classroom-professor-teacher-looking-with-regret-sleeping-teen-student_743272-102.jpg?w=2000" },
+                18: { activity: "퇴근 시간", image: "https://th.bing.com/th/id/OIP.sQGZZO2asUvP57bGd2TW_QHaEX?rs=1&pid=ImgDetMain" },
+                "19-20": { activity: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간", image: "https://thumbs.dreamstime.com/b/portrait-man-cleaning-equipment-cleaning-house-30014330.jpg" },
+                "21-23": { activity: "빨래 널기, 멍때리는 시간", image: "https://content.imageresizer.com/images/memes/Zone-out-meme-8.jpg" }
+            };
+
+            // 기본 활동 및 이미지 값 설정
+            let activity = "특별한 활동 계획 없음";
+            let image = defaultImage;
+
+            // 현재 시간에 따른 활동 및 이미지 매핑
+            for (const [timeRange, data] of Object.entries(activityData)) {
+                const [start, end] = timeRange.split("-").map(Number); // 시간 범위를 분리
+                if ((end !== undefined && hour >= start && hour <= end) || hour === start) {
+                    activity = data.activity;
+                    image = data.image;
+                    break;
+                }
+            }
+
+            // 결과 출력
+            document.write(`
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2>${clockEmoji[hour]} ${hour}시 - ${activity}</h2>
+                    <img src="${image}" alt="${activity}" style="width: 300px; height: auto; border-radius: 8px;">
+                </div>
+            `);
+        }
+
+        dailyRoutine();
+    </script>
+</body>
+</html>

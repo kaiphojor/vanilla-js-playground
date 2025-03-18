@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    
+    <script>
+        // function dailyRoutine() {
+        //     const date = new Date(); // 현재 날짜 및 시간 가져오기
+        //     const hour = date.getHours(); // 현재 시간 가져오기 (0 ~ 23)
+
+
+
+        //     // 시간에 따른 시계 이모지 매칭
+        //     const clockEmoji = [
+        //         "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", // 0시 ~ 11시
+        //         "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"  // 12시 ~ 23시
+        //     ];
+            
+        //     // 시간에 따른 활동
+        //     let activity = "";
+        //     switch (true) {
+        //         case (hour >= 0 && hour < 7):
+        //             activity = "취침";
+        //             break;
+        //         case hour === 7:
+        //             activity = "하루 보너스 게임 하기";
+        //             break;
+        //         case hour === 8:
+        //             activity = "뒹굴면서 몸 지지고 나갈 준비하기";
+        //             break;
+        //         case hour === 9:
+        //             activity = "지하철 통근하기";
+        //             break;
+        //         case (hour >= 10 && hour<= 12):
+        //             activity = "오전 강의 듣는 시간";
+        //             break;
+        //         case hour === 13:
+        //             activity = "점심시간";
+        //             break;
+        //         case (hour >= 14 && hour <= 17):
+        //             activity = "오후 강의 듣는 시간";
+        //             break;
+        //         case hour === 18:
+        //             activity = "퇴근 시간";
+        //             break;
+        //         case (hour >= 19 && hour < 21):
+        //             activity = "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간";
+        //             break;
+        //         case (hour >= 21 && hour < 24):
+        //             activity = "빨래 널기, 멍때리는 시간";
+        //             break;
+        //         default:
+        //             activity = "특별한 활동 계획 없음";
+        //             break;
+        //     }
+        //     // 결과를 화면에 출력
+        //     document.write(`${clockEmoji[hour]} ${hour}시 - ${activity}<br>`);
+        // }
+        // dailyRoutine();
+
+
+        // function dailyRoutine() {
+        //     const date = new Date(); // 현재 날짜 및 시간 가져오기
+        //     const hour = date.getHours(); // 현재 시간 가져오기 (0 ~ 23)
+
+        //     // 시계 이모지 매핑 (12시간 주기 반복 제거)
+        //     const clockEmoji = Array(24).fill(0).map((_, i) => `🕛🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚`[i % 12]);
+
+        //     // 시간별 활동을 객체 형태로 정의 (조건 분기를 간소화)
+        //     const activities = {
+        //         0: "취침", 1: "취침", 2: "취침", 3: "취침", 4: "취침", 5: "취침", 6: "취침",
+        //         7: "하루 보너스 게임 하기",
+        //         8: "뒹굴면서 몸 지지고 나갈 준비하기",
+        //         9: "지하철 통근하기",
+        //         10: "오전 강의 듣는 시간", 11: "오전 강의 듣는 시간", 12: "오전 강의 듣는 시간",
+        //         13: "점심시간",
+        //         14: "오후 강의 듣는 시간", 15: "오후 강의 듣는 시간", 16: "오후 강의 듣는 시간", 17: "오후 강의 듣는 시간",
+        //         18: "퇴근 시간",
+        //         19: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간",
+        //         20: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간",
+        //         21: "빨래 널기, 멍때리는 시간", 22: "빨래 널기, 멍때리는 시간", 23: "빨래 널기, 멍때리는 시간"
+        //     };
+
+        //     // 활동 가져오기 (default 처리 포함)
+        //     const activity = activities[hour] || "특별한 활동 계획 없음";
+
+        //     // 결과를 화면에 출력
+        //     document.write(`${clockEmoji[hour]} ${hour}시 - ${activity}<br>`);
+        // }
+
+        // dailyRoutine();
+
+        // function dailyRoutine() {
+        //     const date = new Date(); // 현재 날짜 및 시간 가져오기
+        //     const hour = date.getHours(); // 현재 시간 가져오기 (0 ~ 23)
+
+        //     // 시계 이모지 매핑
+        //     const clockEmoji = [
+        //         "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", // 0시 ~ 11시
+        //         "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"  // 12시 ~ 23시
+        //     ];
+
+        //     // 기본 이미지 URL
+        //     const defaultImage = "https://example.com/default.jpg";
+
+        //     // 시간별 활동 매핑 (특정 시간대의 이미지만 설정)
+        //     const activityData = {
+        //         "0-6": { activity: "취침", image: "https://example.com/sleep.jpg" },
+        //         7: { activity: "하루 보너스 게임 하기", image: "https://example.com/game.jpg" },
+        //         8: { activity: "뒹굴면서 몸 지지고 나갈 준비하기", image: "https://example.com/relax.jpg" },
+        //         9: { activity: "지하철 통근하기", image: "https://example.com/commute.jpg" },
+        //         "10-12": { activity: "오전 강의 듣는 시간", image: "https://example.com/lecture.jpg" },
+        //         13: { activity: "점심시간", image: "https://example.com/lunch.jpg" },
+        //         "14-17": { activity: "오후 강의 듣는 시간", image: "https://example.com/lecture.jpg" },
+        //         18: { activity: "퇴근 시간", image: "https://example.com/commute.jpg" },
+        //         "19-20": { activity: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간", image: "https://example.com/evening.jpg" },
+        //         "21-23": { activity: "빨래 널기, 멍때리는 시간", image: "https://example.com/relax.jpg" }
+        //     };
+
+        //     // 활동 및 이미지 결정
+        //     let activity = "특별한 활동 계획 없음";
+        //     let image = defaultImage;
+
+        //     for (const [timeRange, data] of Object.entries(activityData)) {
+        //         const [start, end] = timeRange.split("-").map(Number);
+        //         if ((end !== undefined && hour >= start && hour <= end) || hour === start) {
+        //             activity = data.activity;
+        //             image = data.image;
+        //             break;
+        //         }
+        //     }
+
+        //     // 결과를 화면에 출력
+        //     document.write(`
+        //         <div style="text-align: center; margin-bottom: 20px;">
+        //             <h2>${clockEmoji[hour]} ${hour}시 - ${activity}</h2>
+        //             <img src="${image}" alt="${activity}" style="width: 300px; height: auto; border-radius: 8px;">
+        //         </div>
+        //     `);
+        // }
+
+        // dailyRoutine();
+
+
+        function dailyRoutine() {
+            const date = new Date(); // 현재 날짜 및 시간 가져오기
+            const hour = date.getHours(); // 현재 시간 가져오기 (0 ~ 23)
+            // const hour = 21; // 현재 시간 가져오기 (0 ~ 23)
+
+            // 시계 이모지 매핑 (24시간을 명확히 매핑)
+            const clockEmoji = [
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", 
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"
+            ];
+
+            // 기본 이미지 URL 설정
+            const defaultImage = "https://example.com/default.jpg";
+
+            // 시간별 활동 및 이미지 데이터
+            const activityData = {
+                "0-6": { activity: "취침", image: "https://cdn.acidcow.com/pics/20190713/1563040717_tnl9hhkc3l.jpg" },
+                7: { activity: "하루 보너스 게임 하기", image: "https://i.ytimg.com/vi/uBuZZHgY2gY/maxresdefault.jpg" },
+                8: { activity: "뒹굴면서 몸 지지고 나갈 준비하기", image: "https://i.kym-cdn.com/photos/images/original/001/730/671/69d.jpg" },
+                9: { activity: "지하철 통근하기", image: "https://th.bing.com/th/id/R.4105e0ccdbf2f0bc909db64f626a0f42?rik=wOK2riPrVCvxxg&riu=http%3a%2f%2fwww.thedailystruggle.co.uk%2fwp-content%2fuploads%2f2017%2f03%2fcommute.jpg&ehk=2Hv4RfzJd7BMWkbIpy5qhsZLICCtPdIG5Ko%2bdd1z8iA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" },
+                "10-12": { activity: "오전 강의 듣는 시간", image: "https://th.bing.com/th/id/OIP.6uZhoqccWLK2RT32QS9ykwHaFm?w=478&h=362&rs=1&pid=ImgDetMain" },
+                13: { activity: "점심시간", image: "https://th.bing.com/th/id/OIP.X59W5jbF__Wa6ehxOJDNogHaE7?rs=1&pid=ImgDetMain" },
+                "14-17": { activity: "오후 강의 듣는 시간", image: "https://img.freepik.com/premium-vector/boy-sleeping-classroom-professor-teacher-looking-with-regret-sleeping-teen-student_743272-102.jpg?w=2000" },
+                18: { activity: "퇴근 시간", image: "https://th.bing.com/th/id/OIP.sQGZZO2asUvP57bGd2TW_QHaEX?rs=1&pid=ImgDetMain" },
+                "19-20": { activity: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간", image: "https://thumbs.dreamstime.com/b/portrait-man-cleaning-equipment-cleaning-house-30014330.jpg" },
+                "21-23": { activity: "빨래 널기, 멍때리는 시간", image: "https://content.imageresizer.com/images/memes/Zone-out-meme-8.jpg" }
+            };
+
+            // 기본 활동 및 이미지 값 설정
+            let activity = "특별한 활동 계획 없음";
+            let image = defaultImage;
+
+            // 현재 시간에 따른 활동 및 이미지 매핑
+            for (const [timeRange, data] of Object.entries(activityData)) {
+                const [start, end] = timeRange.split("-").map(Number); // 시간 범위를 분리
+                if ((end !== undefined && hour >= start && hour <= end) || hour === start) {
+                    activity = data.activity;
+                    image = data.image;
+                    break;
+                }
+            }
+
+            // 결과 출력
+            document.write(`
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2>${clockEmoji[hour]} ${hour}시 - ${activity}</h2>
+                    <img src="${image}" alt="${activity}" style="width: 300px; height: auto; border-radius: 8px;">
+                </div>
+            `);
+        }
+
+        dailyRoutine();
+    </script>
+</body>
+</html>

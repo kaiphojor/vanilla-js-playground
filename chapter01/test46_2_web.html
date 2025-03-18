@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 루틴</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 중앙에서 위쪽으로 배치 */
+            height: 100vh;
+        }
+
+        .content {
+            margin-top: 50px; /* 콘텐츠를 위쪽으로 올리기 위해 여백 추가 */
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50; /* 제목 색상 */
+        }
+
+        h2 {
+            color: #34495e; /* 서브 제목 색상 */
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 이미지 그림자 효과 */
+        }
+
+        .content {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>오늘의 일일 루틴</h1>
+        <!-- 콘텐츠가 JS에 의해 동적으로 생성됩니다. -->
+    </div>
+    <script>
+        // dailyRoutine이라는 이름을 가진 함수 선언
+        function dailyRoutine() {
+            // 현재 날짜와 시간을 가져오는 Date 객체를 생성하여, date라는 변수에 저장
+            const date = new Date(); 
+
+            // date 객체의 getHours 메서드를 호출하여 현재 시간을 가져오고, 이를 hour라는 변수에 저장
+            const hour = date.getHours(); 
+
+            // 시계 이모지 배열을 생성하여 clockEmoji라는 변수에 저장
+            const clockEmoji = [
+                "🕛", // 0시를 나타내는 시계 이모지
+                "🕐", // 1시를 나타내는 시계 이모지
+                "🕑", // 2시를 나타내는 시계 이모지
+                "🕒", // 3시를 나타내는 시계 이모지
+                "🕓", // 4시를 나타내는 시계 이모지
+                "🕔", // 5시를 나타내는 시계 이모지
+                "🕕", // 6시를 나타내는 시계 이모지
+                "🕖", // 7시를 나타내는 시계 이모지
+                "🕗", // 8시를 나타내는 시계 이모지
+                "🕘", // 9시를 나타내는 시계 이모지
+                "🕙", // 10시를 나타내는 시계 이모지
+                "🕚", // 11시를 나타내는 시계 이모지
+                "🕛", // 12시를 나타내는 시계 이모지
+                "🕐", // 13시를 나타내는 시계 이모지
+                "🕑", // 14시를 나타내는 시계 이모지
+                "🕒", // 15시를 나타내는 시계 이모지
+                "🕓", // 16시를 나타내는 시계 이모지
+                "🕔", // 17시를 나타내는 시계 이모지
+                "🕕", // 18시를 나타내는 시계 이모지
+                "🕖", // 19시를 나타내는 시계 이모지
+                "🕗", // 20시를 나타내는 시계 이모지
+                "🕘", // 21시를 나타내는 시계 이모지
+                "🕙", // 22시를 나타내는 시계 이모지
+                "🕚"  // 23시를 나타내는 시계 이모지
+            ];
+
+            // 기본 이미지 URL을 설정하여 defaultImage라는 변수에 저장
+            const defaultImage = "https://example.com/default.jpg";
+
+            // 활동 데이터와 관련된 객체를 생성하여 activityData라는 변수에 저장
+            const activityData = {
+                "0-6": { // 0시부터 6시까지의 범위 설정
+                    activity: "취침", // 활동 이름
+                    image: "https://cdn.acidcow.com/pics/20190713/1563040717_tnl9hhkc3l.jpg" // 이미지 URL
+                },
+                7: { // 7시의 데이터
+                    activity: "하루 보너스 게임 하기",
+                    image: "https://i.ytimg.com/vi/uBuZZHgY2gY/maxresdefault.jpg"
+                },
+                8: { // 8시의 데이터
+                    activity: "뒹굴면서 몸 지지고 나갈 준비하기",
+                    image: "https://i.kym-cdn.com/photos/images/original/001/730/671/69d.jpg"
+                },
+                9: { // 9시의 데이터
+                    activity: "지하철 통근하기",
+                    image: "https://th.bing.com/th/id/R.4105e0ccdbf2f0bc909db64f626a0f42"
+                },
+                "10-12": { // 10시부터 12시까지의 범위 설정
+                    activity: "오전 강의 듣는 시간",
+                    image: "https://th.bing.com/th/id/OIP.6uZhoqccWLK2RT32QS9ykwHaFm"
+                },
+                13: { // 13시의 데이터
+                    activity: "점심시간",
+                    image: "https://th.bing.com/th/id/OIP.X59W5jbF__Wa6ehxOJDNogHaE7"
+                },
+                "14-17": { // 14시부터 17시까지의 범위 설정
+                    activity: "오후 강의 듣는 시간",
+                    image: "https://img.freepik.com/premium-vector/boy-sleeping-classroom-professor-teacher-looking-with-regret-sleeping-teen-student_743272-102.jpg"
+                },
+                18: { // 18시의 데이터
+                    activity: "퇴근 시간",
+                    image: "https://th.bing.com/th/id/OIP.sQGZZO2asUvP57bGd2TW_QHaEX"
+                },
+                "19-20": { // 19시부터 20시까지의 범위 설정
+                    activity: "저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간",
+                    image: "https://thumbs.dreamstime.com/b/portrait-man-cleaning-equipment-cleaning-house-30014330.jpg"
+                },
+                "21-23": { // 21시부터 23시까지의 범위 설정
+                    activity: "빨래 널기, 멍때리는 시간",
+                    image: "https://content.imageresizer.com/images/memes/Zone-out-meme-8.jpg"
+                }
+            };
+
+            // 기본 활동 및 기본 이미지 값을 초기화
+            let activity = "특별한 활동 계획 없음"; // 기본 활동 메시지
+            let image = defaultImage; // 기본 이미지 URL
+
+            // 활동 데이터를 순회하며 현재 시간에 해당하는 활동과 이미지를 검색
+            for (const [timeRange, data] of Object.entries(activityData)) { // activityData의 각 항목에 대해 반복
+                const [start, end] = timeRange.split("-").map(Number); // 범위를 시작값과 종료값으로 분리하여 처리
+                if ((end !== undefined && hour >= start && hour <= end) || hour === start) {
+                    activity = data.activity; // 활동 이름 설정
+                    image = data.image; // 이미지 URL 설정
+                    break; // 조건을 만족하면 더 이상 반복하지 않음
+                }
+            }
+
+            // HTML 요소를 생성하여 화면에 표시
+            document.write(`
+                <div style="text-align: center; margin-bottom: 20px;"> <!-- 중앙 정렬 및 여백 추가 -->
+                    <h2>${clockEmoji[hour]} ${hour}시 - ${activity}</h2> <!-- 시간과 활동 출력 -->
+                    <img src="${image}" alt="${activity}" style="width: 300px; height: auto; border-radius: 8px;"> <!-- 이미지 출력 -->
+                </div>
+            `);
+        }
+
+        // dailyRoutine 함수 호출을 통해 실행
+        dailyRoutine();
+
+
+    </script>
+</body>
+</html>

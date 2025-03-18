@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    
+    <script>
+        // 요일 day 에 따라 switch case로 document.write() 요일에 따른 수업시작 시간 출력
+        // switch case로 하되 월수 / 화목/ 금 별로 나눠서 일괄처리
+        // default 는 예외처리하기
+        var current = new Date()
+        var day_time = current.getHours()
+        if(day_time < 18) document.write("<img src='images/day.gif'>")
+        else document.write("<img src='images/night.gif'>")
+
+    </script>
+</body>
+</html>

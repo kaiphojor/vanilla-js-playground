@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 루틴</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .controls {
+            margin: 20px 0;
+        }
+
+        select, button {
+            font-size: 16px;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>오늘의 일일 루틴</h1>
+        <!-- 여기에서 콘텐츠가 동적으로 업데이트됩니다. -->
+    </div>
+
+    <div class="controls">
+        <select id="timeSelector">
+            <!-- 0시부터 23시까지 드롭다운 옵션 -->
+            <option value="0">0시</option>
+            <option value="1">1시</option>
+            <option value="2">2시</option>
+            <option value="3">3시</option>
+            <option value="4">4시</option>
+            <option value="5">5시</option>
+            <option value="6">6시</option>
+            <option value="7">7시</option>
+            <option value="8">8시</option>
+            <option value="9">9시</option>
+            <option value="10">10시</option>
+            <option value="11">11시</option>
+            <option value="12">12시</option>
+            <option value="13">13시</option>
+            <option value="14">14시</option>
+            <option value="15">15시</option>
+            <option value="16">16시</option>
+            <option value="17">17시</option>
+            <option value="18">18시</option>
+            <option value="19">19시</option>
+            <option value="20">20시</option>
+            <option value="21">21시</option>
+            <option value="22">22시</option>
+            <option value="23">23시</option>
+        </select>
+        <button id="currentTimeButton">현재 시간</button>
+    </div>
+    <script>
+        function dailyRoutine(hour = new Date().getHours()) {
+            const clockEmoji = [
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚",
+                "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"
+            ];
+            const activityData = {
+                "0-6": ["취침", "https://cdn.acidcow.com/pics/20190713/1563040717_tnl9hhkc3l.jpg"],
+                7: ["하루 보너스 게임 하기", "https://i.ytimg.com/vi/uBuZZHgY2gY/maxresdefault.jpg"],
+                8: ["뒹굴면서 몸 지지고 나갈 준비하기", "https://i.kym-cdn.com/photos/images/original/001/730/671/69d.jpg"],
+                9: ["지하철 통근하기", "https://www.thedailystruggle.co.uk/wp-content/uploads/2017/03/commute.jpg"],
+                "10-12": ["오전 강의 듣는 시간", "https://bpb-us-w2.wpmucdn.com/blog.nus.edu.sg/dist/2/4803/files/2016/05/Yoda_meme-yzp01i-300x227.jpg"],
+                13: ["점심시간", "https://mamasgeeky.com/wp-content/uploads/2019/11/thanksgiving-meme-13-768x511.jpg"],
+                "14-17": ["오후 강의 듣는 시간", "https://img.freepik.com/premium-vector/boy-sleeping-classroom-professor-teacher-looking-with-regret-sleeping-teen-student_743272-102.jpg"],
+                18: ["퇴근 시간", "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbCM8Fs9pyKoDF615lENWBNsIVAo0jiYiuOkUYVJnwnMPDaEG8E48YoZmMPzxfBOHV2PGZiNErgDortmXg2QjTStS0MbvYwigKv_04UJohyphenhyphenHCYvpFeOMczJWrk45gAX2nVXsBZXwFrh58/s1600/54132360.jpg"],
+                "19-20": ["저녁시간, 씻는 시간, 빨래 시간 등 개인 정비 시간", "https://thumbs.dreamstime.com/b/portrait-man-cleaning-equipment-cleaning-house-30014330.jpg"],
+                "21-23": ["빨래 널기, 멍때리는 시간", "https://content.imageresizer.com/images/memes/Zone-out-meme-8.jpg"]
+            };
+
+
+            let activity = "특별한 활동 계획 없음";
+            let image = "https://example.com/default.jpg";
+            for (const [timeRange, data] of Object.entries(activityData)) {
+                const [start, end] = timeRange.split("-").map(Number);
+                if ((end !== undefined && hour >= start && hour <= end) || hour === start) {
+                    activity = data[0];
+                    image = data[1];
+                    break;
+                }
+            }
+
+            const contentDiv = document.querySelector(".content");
+            contentDiv.innerHTML = `
+                <h2>${clockEmoji[hour]} ${hour}시 - ${activity}</h2>
+                <img src="${image}" alt="${activity}">
+            `;
+        }
+
+        // 드랍다운 값 변경 시 업데이트
+        document.getElementById("timeSelector").addEventListener("change", (event) => {
+            const selectedHour = parseInt(event.target.value, 10); // 선택된 시간 가져오기
+            dailyRoutine(selectedHour); // 해당 시간에 따른 활동 업데이트
+        });
+        // 새 버튼의 이벤트 리스너 추가
+        document.getElementById("currentTimeButton").addEventListener("click", () => {
+            const currentHour = new Date().getHours(); // 현재 시간 가져오기
+            dailyRoutine(currentHour); // 해당 시간에 따른 활동 업데이트
+            document.getElementById("timeSelector").value = currentHour; // 드롭다운 메뉴도 현재 시간으로 설정
+        });
+
+        // 페이지 로드 시 현재 시간으로 초기화
+        dailyRoutine();
+
+    </script>
+</body>
+</html>

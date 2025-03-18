@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    
+    <script>
+        let money = 5000; // 초기 지폐 금액 (예: 5000원)
+        let count = 0;    // 차감 횟수
+        let coinUnit = 500;
+
+        document.write("초기 금액: " + money + "원<br>"); // 초기 금액 출력
+
+        while (money > 0) {
+            money -= coinUnit;    // 500원씩 차감
+            count++;         // 차감 횟수 증가
+            document.write("차감 후 금액: " + money + "원 (차감 횟수: " + count + "회)<br>"); // 변경 사항 출력
+        }
+
+        document.write("총 차감 횟수: " + count + "회<br>"); // 최종 결과 출력
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin: 0; padding: 0;}
+		img{vertical-align:top; border: 0;}
+		ul{list-style: none;}
+		#bannerWrap{width: 420px; height: 68px; position: relative;}
+		.frame{width: 400px; overflow: hidden; position: relative;}
+		#bannerList{width: 700px; position: relative; left: 0;}
+		#bannerList li{float: left; width: 100px;}
+		#bannerList li:after{content:""; display: block; clear:both;}
+		.leftBtn{position: absolute; right: 5px; top: 10px; width: 10px; }
+		.rightBtn{position: absolute; right: 5px; top: 40px; width: 10px; }
+	</style>
+	<script type="text/javascript">
+		var num=0;
+		var colWidth=-400;
+		function mvBanner(whichBtn){
+			var myBannerList=document.getElementById("bannerList")
+			if(whichBtn=="leftBtn"){
+				num--;
+				if(num<0) num=1;
+				console.log(num);
+				var xPos=num*colWidth;
+				myBannerList.style.left=xPos+"px";
+			}else{
+				num++;
+				if(num>1) num=0;
+				console.log(num);
+				var xPos=num*colWidth;
+				myBannerList.style.left=xPos+"px";
+			}
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<div id="bannerWrap">
+		<div class="frame">
+			<ul id="bannerList">
+				<li><a href="#"><img src="img/img1.jpg" width="100"alt="배너1"/></a></li>
+				<li><a href="#"><img src="img/img2.jpg" width="100" alt="배너2"/></a></li>
+				<li><a href="#"><img src="img/img3.jpg" width="100" alt="배너3"/></a></li>
+				<li><a href="#"><img src="img/img4.jpg"  width="100"alt="배너4"/></a></li>
+				<li><a href="#"><img src="img/img5.jpg"  width="100"alt="배너5"/></a></li>
+				<li><a href="#"><img src="img/img6.jpg"  width="100"alt="배너6"/></a></li>
+				<li><a href="#"><img src="img/img7.jpg" width="100" alt="배너7"/></a></li>
+			</ul>
+			
+		</div>
+		<a href="#" class="leftBtn" onclick="return mvBanner('leftBtn')"><img src="img/left_arrow.png"width="10" alt="왼쪽버튼"/></a>
+			<a href="#" class="rightBtn" onclick="return mvBanner('rightBtn')"><img src="img/right_arrow.png" width="10"alt="오른쪽버튼"/></a>
+	</div>
+</body>
+</html>

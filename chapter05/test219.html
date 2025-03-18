@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// getProfile 함수: 문자열과 중첩된 배열을 포함하여 반환
+function getProfile() {
+    return ["John", "Doe", ["Developer", "Designer", "Engineer"], "Seoul"];
+}
+
+// 구조분해: 중첩된 배열도 함께 분해하여 각각 변수로 할당
+var [firstName, lastName, [role1, role2, role3], location] = getProfile();
+
+// 개별 변수 출력
+console.log(`First Name: ${firstName}`);
+console.log(`Last Name: ${lastName}`);
+console.log(`Role 1: ${role1}`);
+console.log(`Role 2: ${role2}`);
+console.log(`Role 3: ${role3}`);
+console.log(`Location: ${location}`);
+
+
+// 배열 구조분해로 값들을 분리
+var [firstName, lastName, roles, location] = getProfile();
+
+// 개별 값 출력
+console.log(`First Name: ${firstName}`);
+console.log(`Last Name: ${lastName}`);
+console.log(`Location: ${location}`);
+
+// 중첩 배열 출력
+console.log("Roles:");
+roles.forEach((role, index) => {
+    console.log(`  Role ${index + 1}: ${role}`);
+});
+
+    </script>
+</body>
+</html>

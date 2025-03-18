@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin: 0; padding: 0;}
+		li{list-style:none;}
+		a{text-decoration: none; color: #000;}
+		img{vertical-align: top; border:0;}
+		#bannerWrap{width:840px; height:140px; position: relative; margin: 100px auto;}
+		#bannerWrap .frame{width: 800px; overflow: hidden; position: relative}
+		#bannerWrap .frame #bannerList{width:2800px; position: relative; left: 0;}
+		#bannerWrap .frame #bannerList li{float: left; width: 200px;}
+		.leftBtn{font-size: 30px;  position:absolute; top: 40px; right:5px;}
+		.rightBtn{font-size: 30px;  position:absolute; top: 70px; right:5px;}
+	</style>
+	<script type="text/javascript">
+		var num=0;
+		var colWidth=-800;
+		function myBanner(whichBtn){
+			var myBannerList=document.getElementById("bannerList")
+			if(whichBtn=="leftBtn"){
+				num--;
+				if(num<0) num=3;
+				console.log(num);
+				var xPos=num*colWidth;
+				myBannerList.style.left=xPos+"px";
+			}else{
+				num++;
+				if(num>3) num=0;
+				console.log(num);
+				var xPos=num*colWidth;
+				myBannerList.style.left=xPos+"px";
+			}
+			return false;
+
+		}
+	</script>
+</head>
+<body>
+	<div id="bannerWrap">
+		<div class="frame">
+			<ul id="bannerList">
+				<li><a href="#"><img src="img/img1.jpg" width="200" height="150" alt="배너1"/></a></li>
+				<li><a href="#"><img src="img/img2.jpg" width="200" height="150"alt="배너2"/></a></li>
+				<li><a href="#"><img src="img/img3.jpg" width="200" height="150"alt="배너3"/></a></li>
+				<li><a href="#"><img src="img/img4.jpg" width="200" height="150"alt="배너4"/></a></li>
+				<li><a href="#"><img src="img/img5.jpg" width="200" height="150"alt="배너5"/></a></li>
+				<li><a href="#"><img src="img/img6.jpg" width="200" height="150"alt="배너6"/></a></li>
+				<li><a href="#"><img src="img/img7.jpg" width="200" height="150"alt="배너7"/></a></li>
+				<li><a href="#"><img src="img/img1.jpg" width="200" height="150"alt="배너1"/></a></li>
+				<li><a href="#"><img src="img/img2.jpg" width="200" height="150"alt="배너2"/></a></li>
+				<li><a href="#"><img src="img/img3.jpg" width="200" height="150"alt="배너3"/></a></li>
+				<li><a href="#"><img src="img/img4.jpg" width="200" height="150"alt="배너4"/></a></li>
+				<li><a href="#"><img src="img/img5.jpg" width="200" height="150"alt="배너5"/></a></li>
+				<li><a href="#"><img src="img/img6.jpg" width="200" height="150"alt="배너6"/></a></li>
+				<li><a href="#"><img src="img/img7.jpg" width="200" height="150"alt="배너7"/></a></li>
+			</ul>
+		</div>
+		<a href="#" class="leftBtn" onclick="myBanner('leftBtn')">&lt;</a>
+		<a href="#" class="rightBtn" onclick="myBanner('rightBtn')">&gt;</a>
+	</div>
+</body>
+</html>

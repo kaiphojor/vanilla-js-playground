@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+        haha=confirm("해상도가 모바일 (320*568) 이면 [확인] 단추를 \n 태블릿(1024*768)이면 [취소] 단추를 클릭하세요");
+        if(haha)small();
+        else large();
+        function small(){window.resizeTo(320,568);}
+        function large(){window.resizeTo(1024,768);}
+        
+    </script>
+    <style>
+        #wrap{position: absolute; top: 50%; left: 50%; margin-top: -100px 0px 0px -100px; width: 200px; height: 200px; background: url(images/polornote.gif) no-repeat;}
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+
+</html>

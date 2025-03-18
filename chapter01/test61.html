@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    
+    <script>
+        let sum = 0; // 합계를 저장할 변수
+        let i = 1;   // 초기값
+
+        while (i <= 10) { // 1부터 10까지 순회
+            if (i === 3) { // i가 3이면
+                i++;       // 다음 숫자로 이동
+                continue;  // 아래 코드를 건너뛰고 반복문 계속
+            }
+            sum += i; // 합계에 더하기
+            i++;      // 다음 숫자로 이동
+        }
+
+        document.write("합계: " + sum); // 결과 출력
+
+    </script>
+</body>
+</html>

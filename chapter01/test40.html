@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+    </script>
+</head>
+<body style="margin-top: 50px;">
+    <script>
+        score=101;
+        if(score <=100 && score >= 0){
+
+            document.write(`당신이 취득한 점수는${score}점이므로 `);
+            
+            grade = parseInt(score / 10);
+            switch(grade){
+                case 10:
+                case 9: document.write("A grade"); break;
+                case 8: document.write("B grade"); break;
+                case 7: document.write("C grade"); break;
+                case 6: document.write("D grade"); break;
+                default: document.write("F grade"); break;
+            }
+        }else{
+            document.write('입력오류');
+        }
+    </script>
+</body>
+</html>

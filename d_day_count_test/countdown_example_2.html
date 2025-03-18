@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="css/countdown_example.css">
+</head>
+<body>
+    <div id="countwrap">
+        <h2 id="countment">타이머 기능 제목 어쩌구저쩌구</h2>
+        <div class="counter">
+            <ul class="cf">
+                <li id="counterH" class="fl">
+                    <img src="images/num0.gif" width="40" id="hour10" class="fl" alt="시간 10의 자리">
+                    <img src="images/num0.gif" width="40" id="hour1" class="fl" alt="시간 1의 자리">
+                    <p>hours</p>
+                </li>
+                <li class="fl">
+                    <img src="images/day_bg3.png" width="10" id="middle" class="fl">
+                </li>
+                <li id="counterM" class="fl">
+                    <img src="images/num0.gif" width="40" id="min10" class="fl" alt="분 10의 자리">
+                    <img src="images/num0.gif" width="40" id="min1" class="fl" alt="분 1의 자리">
+                    <p>minutes</p>
+                <li class="fl">
+                    <img src="images/day_bg3.png" width="10" id="middle" class="fl">
+                </li>
+                <li id="counterS" class="fl">
+                    <img src="images/num0.gif" width="40" id="sec10" class="fl" alt="초 10의 자리">
+                    <img src="images/num0.gif" width="40" id="sec1" class="fl" alt="초 1의 자리">
+                    <p>seconds</p>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <input type="number" id="hours" class="time-input" min="0" max="23" value="0 step="1">
+            <label for="hours">시 </label>
+            <input type="number" id="minutes" class="time-input" min="0" max="59" value="0" step="1">
+            <label for="minutes">분 </label>
+            <input type="number" id="seconds" class="time-input" min="0" max="59" value="0" step="1">
+            <label for="seconds">초 </label>
+        </div>
+        <button id="myButton">Click Me!</button>
+    </div>
+    <script>
+        const unit  = x => x%10;//1의 자리 숫자
+        const tenth = x => Math.floor(x/10%10);//10의 자리 숫자
+        const hund = x => Math.floor(x);//100의 자리 숫자
+        var countTimer;
+        var isStartable = true;
+
+        function setTargetDate(inputSeconds){
+            const now = new Date();
+            const nowInSeconds = Math.floor(now.getTime() / 1000);
+            const targetSeconds = nowInSeconds + inputSeconds;
+            return new Date(targetSeconds * 1000);
+        }
+
+        const startButton = document.getElementById("myButton");
+
+        // 버튼 클릭 이벤트 리스너 추가
+        startButton.addEventListener("click", () => {
+            if(!isStartable){
+                return false;
+            }
+            // 클릭 시 실행할 동작            
+            var targetDate = setTargetDate(3600);
+            countTimer = ddaycount(targetDate);
+
+            startButton.textContent = "버튼이 클릭되었습니다!";
+            console.log("버튼 클릭 이벤트 실행");
+            isStartable = false;
+        });
+
+        function ddaycount(targetDate){
+            //숫자 이미지 배열
+            imgArr = [
+                'images/num0.gif',
+                'images/num1.gif',
+                'images/num2.gif',
+                'images/num3.gif',
+                'images/num4.gif',
+                'images/num5.gif',
+                'images/num6.gif',
+                'images/num7.gif',
+                'images/num8.gif',
+                'images/num9.gif'
+            ]
+
+            // 버튼을 눌렀을 때
+            var now = new Date();
+            doomsday = targetDate;
+            today = new Date();
+            howfar = doomsday - today;
+
+            if(howfar>0){
+                //카운트 함수 1초마다 호출
+                setTimeout(()=>countTimer = ddaycount(targetDate), 1000);
+            } else {
+                clearTimeout(countTimer);
+                document.getElementById('countment').innerHTML='카운트가 종료되었습니다.'
+                return false
+            }
+
+            //하루 = 24시간 * 60분 * 60초 * 1000밀리초
+            howfar = howfar % (1000 * 60 * 60 * 24);
+            hours = Math.floor(howfar/(1000*60*60));
+            mins = Math.floor(howfar/(1000*60));
+            secs = Math.floor(howfar/(1000));
+
+            //거꾸로 카운트 되기 때문에 나머지를 구하기 위한 변수 선언
+            h = hours
+            m = mins-hours*60
+            s = secs-mins*60
+
+            //시간 이미지 실행
+            document.getElementById('hour10').setAttribute('src', imgArr[tenth(h)])
+            document.getElementById('hour1').setAttribute('src', imgArr[unit(h)])
+            document.getElementById('min10').setAttribute('src', imgArr[tenth(m)])
+            document.getElementById('min1').setAttribute('src', imgArr[unit(m)])
+            document.getElementById('sec10').setAttribute('src', imgArr[tenth(s)])
+            document.getElementById('sec1').setAttribute('src', imgArr[unit(s)])
+
+            //남은 일수, 시간, 분, 초가 각 100(남은일수만) 또는 10보다 작을 경우 10의 자리 혹은 100의 자리를 0으로 표현
+            if(h<10){h='0'+h}
+            if(m<10){m='0'+m}
+            if(s<10){s='0'+s}          
+        };
+        
+        document.querySelectorAll(".time-input").forEach(input => {
+            // // input 이벤트: 키보드 입력 처리
+            // input.addEventListener("input", () => {
+            //     handleInputChange(input);
+            // });
+
+            // change 이벤트: 화살표 버튼 클릭 처리
+            input.addEventListener("change", () => {
+                handleInputChange(input);
+                const currentValue = parseInt(input.value, 10) || 0;
+                const previousValue = parseInt(input.getAttribute('value'), 10) || 0;
+                const step = currentValue > previousValue ? 1 : -1;
+                updateValue(input, step);
+                input.setAttribute('value', currentValue); // 이전 값 업데이트
+            });
+
+            // 키보드 화살표 누르기 처리
+            input.addEventListener("keydown", (event) => {
+                const step = event.key === "ArrowUp" ? 1 : (event.key === "ArrowDown" ? -1 : 0);
+                if (step !== 0) {
+                    updateValue(input, step);
+                    event.preventDefault(); // 기본 동작 방지
+                }
+            });
+        });
+
+        // 입력값 변경 처리 로직
+        function handleInputChange(input) {
+            const id = input.id; // hours, minutes, or seconds
+            const value = parseInt(input.value, 10) || 0;
+            const max = parseInt(input.max, 10);
+            const min = parseInt(input.min, 10);
+
+            // 값이 범위를 벗어나면 수정
+            if (value > max) {
+                input.value = max;
+            } else if (value < min) {
+                input.value = min;
+            }
+        }
+
+        function updateValue(input, step) {
+            const id = input.id; // hours, minutes, or seconds
+            const value = parseInt(input.value, 10) || 0;
+            const max = parseInt(input.max, 10);
+            const min = parseInt(input.min, 10);
+
+            if (id === "minutes") {
+                if (value === 0 && step === -1) {
+                    const hoursInput = document.getElementById("hours");
+                    if (parseInt(hoursInput.value, 10) > 0) {
+                        hoursInput.value = parseInt(hoursInput.value, 10) - 1;
+                        input.value = max;
+                    }
+                } else if (value === max && step === 1) {
+                    const hoursInput = document.getElementById("hours");
+                    if (parseInt(hoursInput.value, 10) < 23) {
+                        hoursInput.value = parseInt(hoursInput.value, 10) + 1;
+                        input.value = min;
+                    }
+                } else {
+                    input.value = Math.min(max, Math.max(min, value + step));
+                }
+            } else if (id === "seconds") {
+                if (value === 0 && step === -1) {
+                    const minutesInput = document.getElementById("minutes");
+                    if (parseInt(minutesInput.value, 10) > 0) {
+                        minutesInput.value = parseInt(minutesInput.value, 10) - 1;
+                        input.value = max;
+                    } else {
+                        const hoursInput = document.getElementById("hours");
+                        if (parseInt(hoursInput.value, 10) > 0) {
+                            hoursInput.value = parseInt(hoursInput.value, 10) - 1;
+                            minutesInput.value = 59;
+                            input.value = max;
+                        }
+                    }
+                } else if (value === max && step === 1) {
+                    const minutesInput = document.getElementById("minutes");
+                    if (parseInt(minutesInput.value, 10) < 59) {
+                        minutesInput.value = parseInt(minutesInput.value, 10) + 1;
+                        input.value = min;
+                    } else {
+                        const hoursInput = document.getElementById("hours");
+                        if (parseInt(hoursInput.value, 10) < 23) {
+                            hoursInput.value = parseInt(hoursInput.value, 10) + 1;
+                            minutesInput.value = 0;
+                            input.value = min;
+                        }
+                    }
+                } else {
+                    input.value = Math.min(max, Math.max(min, value + step));
+                }
+            } else {
+                input.value = Math.min(max, Math.max(min, value + step));
+            }
+        }
+    </script>
+</body>
+</html>

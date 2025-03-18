@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06</title>
+    <script>
+        
+    </script>
+    <style>
+        #wrap{position: absolute; top: 50%; left: 50%; margin-top: -100px 0px 0px -100px; width: 200px; height: 200px; background: url(images/polornote.gif) no-repeat;}
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+    <script>
+// Function to parse CSV data
+function parseCSV(csvData) {
+  const rows = csvData.split("\n"); // Split by lines
+  const headers = rows[0].split(","); // Extract headers from the first row
+  const data = rows.slice(1).map(row => {
+    const values = row.split(",");
+    return headers.reduce((acc, header, index) => {
+      acc[header] = values[index]?.trim(); // Trim whitespace
+      return acc;
+    }, {});
+  });
+  return data;
+}
+
+// Fetch the CSV file from the project directory
+fetch("./data/pet_clinic.csv") // Relative path to the file
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Failed to fetch file: ${response.statusText}`);
+    }
+    return response.text();
+  })
+  .then(csvData => {
+    const parsedData = parseCSV(csvData); // Parse the CSV content
+    console.log(parsedData); // Log the parsed data
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+    </script>
+</body>
+
+</html>

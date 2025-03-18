@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/ddaycount.css">
+    <script>
+        function ddaycount(){
+            // 1. imgArr 배열 생성
+            const imgArr = Array.from({ length: 10 }, (_, i) => `images/num${i}.gif`);
+            console.log("imgArr:", imgArr);
+    
+            // 2. today: 현재 날짜
+            const today = new Date();
+            console.log("오늘 날짜 (today):", today);
+            /*
+            출력 예시:
+            오늘 날짜 (today): Wed Mar 12 2025 12:10:00 GMT+0900 (한국 표준시)
+            */
+    
+            // 3. doomsday: 33일 뒤 날짜 계산
+            const doomsday = new Date(today.getTime() + 33 * 24 * 60 * 60 * 1000);
+            console.log("Doomsday 날짜:", doomsday);
+            /*
+            출력 예시:
+            Doomsday 날짜: Mon Apr 14 2025 12:10:00 GMT+0900 (한국 표준시)
+            */
+    
+            // 4. 두 날짜 차이 계산 (howfar)
+            const howfar = doomsday - today; // 밀리초 단위 차이
+            const daysLeft = Math.ceil(howfar / (1000 * 60 * 60 * 24)); // 일 단위 변환
+            console.log("오늘부터 Doomsday까지 남은 시간 (밀리초):", howfar);
+            if (howfar > 0) {
+                // 카운트 출력
+                document.getElementById('countment').innerHTML =
+                    `${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남았습니다.`;
+    
+                // 1초 뒤 재호출
+                setTimeout(ddaycount, 1000);
+            } else {
+                // 카운트 종료 메시지 표시
+                clearTimeout(); // 필요할 경우 명시적으로 타이머를 정리
+                document.getElementById('countment').innerHTML = "카운트가 종료되었습니다.";
+                return false; // 함수 종료
+            }
+    
+            // 남은 일, 시, 분, 초 계산
+            const days = Math.floor(howfar / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((howfar % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((howfar % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((howfar % (1000 * 60)) / 1000);
+
+        }
+
+    </script>
+</head>
+
+<body onLoad="ddaycount()">
+    <div id="countwrap">
+        <h2 id="countment">2026 Coming...</h2>
+        <div class="counter">
+            <ul class="cf">
+                <!-- D-Day Counter -->
+                <li id="countD" class="fl">
+                    <img src="images/num0.gif" width="40" class="fl" id="day100">
+                    <img src="images/num0.gif" width="40" class="fl" id="day10">
+                    <img src="images/num0.gif" width="40" class="fl" id="day1">
+                </li>
+                <li class="fl">
+                    <img src="images/day_bg3.png" width="10" id="middle" class="fl">
+                </li>
+
+                <!-- Hour Counter -->
+                <li id="counterH" class="fl">
+                    <img src="images/num0.gif" width="40" class="fl" id="hour10">
+                    <img src="images/num0.gif" width="40" class="fl" id="hour1">
+                </li>
+
+                <li class="fl">
+                    <img src="images/day_bg3.png" width="10" id="middle" class="fl">
+                </li>
+                <!-- Minute Counter -->
+                <li id="counterM" class="fl">
+                    <img src="images/num0.gif" width="40" class="fl" id="min10">
+                    <img src="images/num0.gif" width="40" class="fl" id="min1">
+                </li>
+                <li class="fl">
+                    <img src="images/day_bg3.png" width="10" id="middle" class="fl">
+                </li>
+
+                <!-- Second Counter -->
+                <li id="counterS" class="fl">
+                    <img src="images/num0.gif" width="40" class="fl" id="sec10">
+                    <img src="images/num0.gif" width="40" class="fl" id="sec1">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// XMLHttpRequest 객체 생성
+const xhr = new XMLHttpRequest();
+
+// 요청 초기화: HTTP GET 메소드와 URL 설정
+// xhr.open("GET", "/posts"); // 비동기 요청
+xhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true); // 비동기 요청
+// 요청 헤더 추가
+xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8"); // JSON 데이터 타입 명시
+xhr.send(JSON.stringify({title:'foo',body:'bar',userId:1}));// 요청전송
+xhr.onload = ()=>{    
+    // if(xhr.status === 200){
+        if(xhr.status >= 200 && xhr.status < 300){
+            // 요청 성공: 응답 출력
+            var res = JSON.parse(xhr.response);
+            console.log(res); // JSON 형식으로 응답 출력
+        }else{
+            // 요청 실패: 상태 코드 출력
+            console.error(xhr.status,xhr.statusText); // JSON 형식으로 응답 출력
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
