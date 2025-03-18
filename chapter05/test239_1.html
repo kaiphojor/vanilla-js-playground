@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS Module Example</title>
+</head>
+<body>
+  <script>
+class Car {
+  constructor(brand, model, year) {
+    this._brand = brand; // Private-like property (conventionally prefixed with "_")
+    this._model = model; 
+    this._year = year;   
+  }
+
+  // Getter for brand
+  get brand() {
+    return this._brand;
+  }
+
+  // Setter for brand
+  set brand(newBrand) {
+    this._brand = newBrand;
+  }
+
+  // Getter for model
+  get model() {
+    return this._model;
+  }
+
+  // Setter for model
+  set model(newModel) {
+    this._model = newModel;
+  }
+
+  // Getter for year
+  get year() {
+    return this._year;
+  }
+
+  // Setter for year
+  set year(newYear) {
+    if (newYear > 1885) { // Cars were invented around 1886
+      this._year = newYear;
+    } else {
+      console.log('Invalid year!');
+    }
+  }
+
+  // Method to display car details
+  getDetails() {
+    return `This car is a ${this._year} ${this._brand} ${this._model}.`;
+  }
+}
+
+// Create a new Car instance
+const myCar = new Car('Toyota', 'Corolla', 2022);
+
+// Accessing using getters
+console.log(myCar.getDetails()); // Output: This car is a 2022 Toyota Corolla.
+
+// Modifying using setters
+myCar.brand = 'Honda';
+myCar.model = 'Civic';
+myCar.year = 2021;
+
+// Access updated details
+console.log(myCar.getDetails()); // Output: This car is a 2021 Honda Civic.
+
+  </script>
+</body>
+</html>

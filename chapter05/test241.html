@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS Module Example</title>
+</head>
+<body>
+  <script>
+// 외부에서 x를 선언하지 않고 할당 (일반 모드)
+x = 10; // 선언 없이 할당 (에러 없음 - 일반 모드)
+console.log("x:", x); // x: 10
+
+function myFunction() {
+  "use strict"; // 엄격 모드 선언
+
+  try {
+    y = 20; // 선언 없이 할당 (엄격 모드에서는 에러 발생)
+    console.log("y:", y);
+  } catch (error) {
+    console.error("Error:", error.message); // ReferenceError: y is not defined
+  }
+}
+
+myFunction();
+
+
+  </script>
+</body>
+</html>

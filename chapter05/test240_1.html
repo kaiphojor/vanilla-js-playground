@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS Module Example</title>
+</head>
+<body>
+  <script>
+function addNumbers(a, b) {
+  try {
+    // Check if both inputs are numbers
+    if (typeof a !== 'number' || typeof b !== 'number') {
+      throw new Error('Both inputs must be numbers!');
+    }
+
+    // Perform addition
+    const result = a + b;
+    console.log(`The result of ${a} + ${b} is: ${result}`);
+  } catch (error) {
+    // Handle the error
+    console.error('An error occurred:', error.message);
+  } finally {
+    // This block will always execute
+    console.log('Addition attempt completed.');
+  }
+}
+
+// Example Usage:
+addNumbers(5, 10); // 정상 동작
+addNumbers(5, 'Hello'); // 오류 발생
+
+
+  </script>
+</body>
+</html>

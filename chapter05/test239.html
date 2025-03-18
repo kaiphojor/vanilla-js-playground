@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS Module Example</title>
+</head>
+<body>
+  <script>
+class Car {
+  constructor(brand, model, year) {
+    this._brand = brand;
+    this._model = model;
+    this._year = year;
+  }
+
+  get getBrand() {
+    return this._brand;
+  }
+
+  set setBrand(newBrand) {
+    this._brand = newBrand;
+  }
+
+  get getModel() {
+    return this._model;
+  }
+
+  set setModel(newModel) {
+    this._model = newModel;
+  }
+
+  get getYear() {
+    return this._year;
+  }
+
+  set setYear(newYear) {
+    if (newYear > 1885) {
+      this._year = newYear;
+    } else {
+      console.log("Invalid year!");
+    }
+  }
+
+  getDetails() {
+    return `This car is a ${this._year} ${this._brand} ${this._model}.`;
+  }
+}
+
+class ElectricCar extends Car {
+  constructor(brand, model, year, batteryCapacity) {
+    super(brand, model, year); // Call the parent class constructor
+    this._batteryCapacity = batteryCapacity; // Battery capacity in kWh
+  }
+
+  // Getter for battery capacity
+  get getBatteryCapacity() {
+    return this._batteryCapacity;
+  }
+
+  // Setter for battery capacity
+  set setBatteryCapacity(newBatteryCapacity) {
+    if (newBatteryCapacity > 0) {
+      this._batteryCapacity = newBatteryCapacity;
+    } else {
+      console.log("Invalid battery capacity!");
+    }
+  }
+
+  // Override the getDetails method
+  getDetails() {
+    return `${super.getDetails()} It has a battery capacity of ${this._batteryCapacity} kWh.`;
+  }
+}
+
+// Example usage:
+const myElectricCar = new ElectricCar('Tesla', 'Model 3', 2023, 75);
+
+console.log(myElectricCar.getDetails()); // Output: This car is a 2023 Tesla Model 3. It has a battery capacity of 75 kWh.
+
+// Modify battery capacity
+myElectricCar.setBatteryCapacity = 80;
+
+console.log(myElectricCar.getDetails()); // Output: This car is a 2023 Tesla Model 3. It has a battery capacity of 80 kWh.
+
+  </script>
+</body>
+</html>

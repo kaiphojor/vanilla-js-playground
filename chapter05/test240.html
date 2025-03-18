@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla JS Module Example</title>
+</head>
+<body>
+  <script>
+// Full example in action
+function runExample() {
+  try {
+    console.log("Attempting to call a non-existent function...");
+    notExistentFunction();
+  } catch (error) {
+    console.error("Error caught in catch block:", error.message);
+  } finally {
+    console.log("This will always execute, cleanup tasks can be done here.");
+  }
+}
+
+runExample();
+
+  </script>
+</body>
+</html>
