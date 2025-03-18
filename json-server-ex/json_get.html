@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Base URL of the JSON Server
+        const baseURL = "http://localhost:3000";
+
+        // Fetch posts
+        fetch(`${baseURL}/posts`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Posts:", data);
+                document.write("<h1>Posts:</h1>");
+                data.forEach(post => {
+                    document.write(`<p>ID: ${post.id}, Title: ${post.title}, Author: ${post.author}</p>`);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching posts:", error.message);
+            })
+            .finally(() => {
+                console.log("Post fetch attempt completed.");
+            });
+        // Fetch posts
+        fetch(`${baseURL}/posts/1`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Posts:", data);
+                document.write("<h1>Post 1</h1>");
+                
+                document.write(`<p>ID: ${data.id}, Title: ${data.title}, Author: ${data.author}</p>`);
+                
+            })
+            .catch(error => {
+                console.error("Error fetching posts:", error.message);
+            })
+            .finally(() => {
+                console.log("Post fetch attempt completed.");
+            });
+
+        // Fetch comments
+        fetch(`${baseURL}/comments`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Comments:", data);
+                document.write("<h1>Comments:</h1>");
+                data.forEach(comment => {
+                    document.write(`<p>ID: ${comment.id}, Body: ${comment.body}, PostID: ${comment.postId}</p>`);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching comments:", error.message);
+            })
+            .finally(() => {
+                console.log("Comment fetch attempt completed.");
+            });
+
+        // Fetch profile
+        fetch(`${baseURL}/profile`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Profile:", data);
+                document.write("<h1>Profile:</h1>");
+                document.write(`<p>Name: ${data.name}</p>`);
+            })
+            .catch(error => {
+                console.error("Error fetching profile:", error.message);
+            })
+            .finally(() => {
+                console.log("Profile fetch attempt completed.");
+            });
+
+    </script>
+</body>
+
+</html>
